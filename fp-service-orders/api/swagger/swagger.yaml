@@ -1,0 +1,81 @@
+swagger: "2.0"
+info:
+  version: "0.0.4"
+  title: FP Order service
+# during dev, should point to your local machine
+host: localhost:10011
+# basePath prefixes all resource paths 
+basePath: /api/v1
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /journey/Orders:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: orders
+    get:
+      description: List of possible journey
+      # used as the method name of the controller
+      operationId: listOrders
+      parameters:
+        - name: nameId
+          in: query
+          description: Journey spot to filter out
+          required: false
+          type: string
+        - name: rating
+          in: query
+          description: rating recommend 
+          required: false
+          type: string  
+        - name: page
+          in: query
+          description: Page to iterate, 1 is default
+          required: false
+          type: number             
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: array
+            items:
+                $ref: "#/definitions/journey"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
+definitions:
+  journey:
+    required:
+      - name
+    properties:
+      name:
+        type: string
+      date:
+        type: integer
+      availableJoutneys:
+        type: array
+        description: Journeys that are available to order
+        items:
+          type: string
+
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
