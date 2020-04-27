@@ -1,0 +1,23 @@
+<table>
+  <thead>
+    <th style="border: 1px solid #000;">name</th>
+    <th style="border: 1px solid #000;">destination</th>
+    <th style="border: 1px solid #000;">time</th>
+    <th style="border: 1px solid #000;">date of depature</th>
+    <th style="border: 1px solid #000;">status</th>
+  </thead>
+  <tbody>
+    {{#each journey}}
+      <tr>
+        <td style="border: 1px solid #000;">{{name}}</td>
+        <td style="border: 1px solid #000;">{{destination}}</td>
+        <td style="border: 1px solid #000;"> {{hours}}:{{minutes}}</td>
+        <td style="border: 1px solid #000;">{{ date }}</td>
+        {{#if status}}<td style="border: 1px solid #000;background:green;">confirmed</td>{{else}}<td style="border: 1px solid #000;background:red;">canceled</td>{{/if}}
+        
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+
