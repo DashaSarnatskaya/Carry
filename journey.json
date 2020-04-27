@@ -1,0 +1,13 @@
+{
+    "destination":"Paris",
+    "name":"Elvis Pop",
+    "departure":{
+        "day":"21",
+        "month":"04"
+    },
+    "time":{
+        "hours":"21",
+        "minutes":"40"
+    },
+    "status":"confirmed"
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<journey destination="Paris">
+    <customer name="Elvis Pop"</customer>
+    <date departure="21.04" ></date>
+    <time hours ="21.40" ></time>
+    <status reservation="confirmed"></status>
+</journey >
